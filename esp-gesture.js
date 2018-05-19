@@ -64,7 +64,7 @@ class ESPGESPlugin
         this.switch1Service
 	.getCharacteristic(Characteristic.ProgrammableSwitchEvent)
 //     	 if (gesture == '1') {
-     	   .setValue( Characteristic.ProgrammableSwitchEvent.SINGLE_PRESS );
+     	   .setValue(SINGLE_PRESS);
 	/*	if (gesture == '1') 
 		Characteristic.ProgrammableSwitchEvent.SINGLE_PRESS; //0
 		if (gesture == '2') 
