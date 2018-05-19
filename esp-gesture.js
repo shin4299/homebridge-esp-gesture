@@ -66,14 +66,23 @@ class ESPGESPlugin
         this.switch1Service
 	.getCharacteristic(Characteristic.ProgrammableSwitchEvent)
 //     	 
-     	   .setValue( // Characteristic.ProgrammableSwitchEvent.state);
-		if (gesture == '1') 
-		Characteristic.ProgrammableSwitchEvent.SINGLE_PRESS;
-		if (gesture == '2') 
-   	     	Characteristic.ProgrammableSwitchEvent.DOUBLE_PRESS;
-   	   	if (gesture == '3') 
-   	     	Characteristic.ProgrammableSwitchEvent.LONG_PRESS;
-  	    )
+     	   .setValue(function(callback) {
+                switch (gesture) {
+                    case '1':
+                        callback(null, Characteristic.ProgrammableSwitchEvent.SINGLE_PRESS);
+                        break;
+                    case '2':
+                        callback(null, Characteristic.ProgrammableSwitchEvent.DOUBLE_PRESS);
+                        break;
+                    case '3':
+                        callback(null, Characteristic.ProgrammableSwitchEvent.LONG_PRESS);
+                        break;
+//                    default:
+//                        callback(null, Characteristic.TargetDoorState.STOPPED);
+//                        break;
+                }
+            });
+		
 		}
 	    
     });
