@@ -8,10 +8,10 @@ module.exports = (homebridge) => {
   Service = homebridge.hap.Service;
   Characteristic = homebridge.hap.Characteristic;
 
-  homebridge.registerAccessory('homebridge-esp-gesture', 'ESPGESTURE', ESPLUXPlugin);
+  homebridge.registerAccessory('homebridge-esp-gesture', 'ESPGESTURE', ESPGESPlugin);
 };
 
-class ESPLUXPlugin
+class ESPGESPlugin
 {
   constructor(log, config) {
     this.log = log;
