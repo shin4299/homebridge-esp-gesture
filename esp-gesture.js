@@ -62,14 +62,16 @@ class ESPGESPlugin
     } else */
     if (gesture >= 1) {
         this.switch1Service
-	.getCharacteristic(Characteristic.ProgrammableSwitchEvent);
-     	 if (gesture == '1') {
-     	   event.updateValue(Characteristic.ProgrammableSwitchEvent.SINGLE_PRESS); //0
-   	   } else if (gesture == '2') {
-   	     event.updateValue(Characteristic.ProgrammableSwitchEvent.DOUBLE_PRESS); //1
-   	   } else if (gesture == '3') {
-   	     event.updateValue(Characteristic.ProgrammableSwitchEvent.LONG_PRESS); //2
-  	    }
+	.getCharacteristic(Characteristic.ProgrammableSwitchEvent)
+//     	 if (gesture == '1') {
+     	   .setValue( 
+		if (gesture == '1') 
+		Characteristic.ProgrammableSwitchEvent.SINGLE_PRESS; //0
+		if (gesture == '2') 
+   	     	Characteristic.ProgrammableSwitchEvent.DOUBLE_PRESS; //1
+   	   	if (gesture == '3') 
+   	     	Characteristic.ProgrammableSwitchEvent.LONG_PRESS); //2
+  	    )
     } 
 	    
     });
