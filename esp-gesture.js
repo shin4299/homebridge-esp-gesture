@@ -26,7 +26,7 @@ class ESPGESPlugin
       .setCharacteristic(Characteristic.SerialNumber, this.device);
 	  
 	this.switch1Service = new Service.StatelessProgrammableSwitch(this.name_1);
-	this.switch2Service = new Service.StatelessProgrammableSwitch(this.name_2);
+//	this.switch2Service = new Service.StatelessProgrammableSwitch(this.name_2);
     
 
     this.server = dgram.createSocket('udp4');
@@ -51,27 +51,27 @@ class ESPGESPlugin
 
 	    	if (gesture == '1') {
         this.switch1Service
-	.getCharacteristic(Characteristic.ProgrammableSwitchEvent)
+	.getCharacteristic(Characteristic.ProgrammableSwitchEvent.BUTTON_1)
      	.setValue(Characteristic.ProgrammableSwitchEvent.SINGLE_PRESS);
 		} else if (gesture == '2') {
         this.switch1Service
-	.getCharacteristic(Characteristic.ProgrammableSwitchEvent)
+	.getCharacteristic(Characteristic.ProgrammableSwitchEvent.BUTTON_1)
      	.setValue(Characteristic.ProgrammableSwitchEvent.DOUBLE_PRESS);
 		} else if (gesture == '3') {
         this.switch1Service
-	.getCharacteristic(Characteristic.ProgrammableSwitchEvent)
+	.getCharacteristic(Characteristic.ProgrammableSwitchEvent.BUTTON_1)
      	.setValue(Characteristic.ProgrammableSwitchEvent.LONG_PRESS);
 		} else if (gesture == '4') {
-        this.switch2Service
-	.getCharacteristic(Characteristic.ProgrammableSwitchEvent)
+        this.switch1Service
+	.getCharacteristic(Characteristic.ProgrammableSwitchEvent.BUTTON_2)
      	.setValue(Characteristic.ProgrammableSwitchEvent.SINGLE_PRESS);
 		} else if (gesture == '5') {
-        this.switch2Service
-	.getCharacteristic(Characteristic.ProgrammableSwitchEvent)
+        this.switch1Service
+	.getCharacteristic(Characteristic.ProgrammableSwitchEvent.BUTTON_2)
      	.setValue(Characteristic.ProgrammableSwitchEvent.DOUBLE_PRESS);
 		} else if (gesture == '6') {
-        this.switch2Service
-	.getCharacteristic(Characteristic.ProgrammableSwitchEvent)
+        this.switch1Service
+	.getCharacteristic(Characteristic.ProgrammableSwitchEvent.BUTTON_2)
      	.setValue(Characteristic.ProgrammableSwitchEvent.LONG_PRESS);
 		}
 		
@@ -87,8 +87,8 @@ class ESPGESPlugin
 
   getServices() {
 	  
-//	return [this.informationService, this.switch1Service];
-	return [this.informationService, this.switch1Service, this.switch2Service];
+	return [this.informationService, this.switch1Service];
+//	return [this.informationService, this.switch1Service, this.switch2Service];
 
   }
 }
