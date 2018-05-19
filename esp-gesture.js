@@ -16,7 +16,7 @@ class ESPLUXPlugin
   constructor(log, config) {
     this.log = log;
     this.name = config.name;
-    this.listen_port = config.listen_port || 8269;
+    this.listen_port = config.listen_port || 8265;
 	  
 	this.informationService = new Service.AccessoryInformation();
 
