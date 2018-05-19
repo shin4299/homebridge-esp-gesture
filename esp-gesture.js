@@ -60,11 +60,18 @@ class ESPGESPlugin
    	     event.updateValue(Characteristic.ProgrammableSwitchEvent.LONG_PRESS); //2
   	    }
     } else */
-    if (gesture >= 1) {
+	    let state;
+    if (gesture == '1') {
+	    state = SINGLE_PRESS 
+    } else if (gesture == '2') {
+	    state = DOUBLE_PRESS 
+    } else if (gesture == '3') {
+	    state = LONG_PRESS 
+    } 
         this.switch1Service
 	.getCharacteristic(Characteristic.ProgrammableSwitchEvent)
 //     	 if (gesture == '1') {
-     	   .setValue(SINGLE_PRESS);
+     	   .setValue(Characteristic.ProgrammableSwitchEvent.state);
 	/*	if (gesture == '1') 
 		Characteristic.ProgrammableSwitchEvent.SINGLE_PRESS; //0
 		if (gesture == '2') 
