@@ -2,7 +2,7 @@
   "name": "homebridge-esp-gesture",
   "version": "1.0.0",
   "description": "UDP server receiving JSON messages from sensors for Homebridge: https://github.com/nfarina/homebridge\"",
-  "main": "esp-lux.js",
+  "main": "esp-gesture.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -20,12 +20,12 @@
   "author": "shin4299",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/shin4299/homebridge-esp-lux/issues"
+    "url": "https://github.com/shin4299/homebridge-esp-gesture/issues"
   },
   "engines": {
     "node": ">=6.0.0",
     "homebridge": ">=0.2.0"
   },
-  "homepage": "https://github.com/shin4299/homebridge-esp-lux#readme",
+  "homepage": "https://github.com/shin4299/homebridge-esp-gesture#readme",
   "dependencies": {}
 }
