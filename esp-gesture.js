@@ -25,8 +25,8 @@ class ESPGESPlugin
       .setCharacteristic(Characteristic.Model, "ESPEasyGesture")
       .setCharacteristic(Characteristic.SerialNumber, this.device);
 	  
-	this.switch1Service = new Service.StatelessProgrammableSwitch(this.name 1);
-	this.switch2Service = new Service.StatelessProgrammableSwitch(this.name 2);
+	this.switch1Service = new Service.StatelessProgrammableSwitch(this.name_1);
+	this.switch2Service = new Service.StatelessProgrammableSwitch(this.name_2);
     
 
     this.server = dgram.createSocket('udp4');
