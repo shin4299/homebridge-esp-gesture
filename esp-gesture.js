@@ -61,25 +61,20 @@ class ESPGESPlugin
   	    }
     } else */
 	  //  let state;
-    if (gesture == '1') {
-	   var state = "SINGLE_PRESS"
-    } else if (gesture == '2') {
-	   var state = "DOUBLE_PRESS"
-    } else if (gesture == '3') {
-	   var state = "LONG_PRESS"
-    } 
+
+	    	if (gesture >= '1') {
         this.switch1Service
 	.getCharacteristic(Characteristic.ProgrammableSwitchEvent)
-//     	 if (gesture == '1') {
-     	   .setValue(Characteristic.ProgrammableSwitchEvent.state);
-	/*	if (gesture == '1') 
-		Characteristic.ProgrammableSwitchEvent.SINGLE_PRESS; //0
+//     	 
+     	   .setValue( // Characteristic.ProgrammableSwitchEvent.state);
+		if (gesture == '1') 
+		Characteristic.ProgrammableSwitchEvent.SINGLE_PRESS;
 		if (gesture == '2') 
-   	     	Characteristic.ProgrammableSwitchEvent.DOUBLE_PRESS; //1
+   	     	Characteristic.ProgrammableSwitchEvent.DOUBLE_PRESS;
    	   	if (gesture == '3') 
-   	     	Characteristic.ProgrammableSwitchEvent.LONG_PRESS); //2
-  	    )*/
-    
+   	     	Characteristic.ProgrammableSwitchEvent.LONG_PRESS;
+  	    )
+		}
 	    
     });
 
