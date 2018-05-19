@@ -26,7 +26,7 @@ class ESPGESPlugin
       .setCharacteristic(Characteristic.SerialNumber, this.device);
 	  
 	this.switch1Service = new Service.StatelessProgrammableSwitch(this.name + '1');
-	this.switch2Service = new Service.StatelessProgrammableSwitch(this.name + '2');
+//	this.switch2Service = new Service.StatelessProgrammableSwitch(this.name + '2');
     
 
     this.server = dgram.createSocket('udp4');
@@ -49,7 +49,7 @@ class ESPGESPlugin
 
       const gesture = json.gesture;
 	    
-    if (gesture >= 4) {
+/*    if (gesture >= 4) {
         this.switch2Service
 	.getCharacteristic(Characteristic.ProgrammableSwitchEvent);
      	 if (gesture == '4') {
@@ -59,7 +59,8 @@ class ESPGESPlugin
    	   } else if (gesture == '6') {
    	     event.updateValue(Characteristic.ProgrammableSwitchEvent.LONG_PRESS); //2
   	    }
-    } else if (gesture >= 1) {
+    } else */
+    if (gesture >= 1) {
         this.switch1Service
 	.getCharacteristic(Characteristic.ProgrammableSwitchEvent);
      	 if (gesture == '1') {
@@ -80,7 +81,8 @@ class ESPGESPlugin
 
   getServices() {
 	  
-	return [this.informationService, this.switch1Service, this.switch2Service];
+	return [this.informationService, this.switch1Service];
+//	return [this.informationService, this.switch1Service, this.switch2Service];
 
   }
 }
