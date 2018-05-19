@@ -62,11 +62,23 @@ class ESPGESPlugin
     } else */
 	  //  let state;
 
-	    	if (gesture >= '1') {
+	    	if (gesture == '1') {
         this.switch1Service
 	.getCharacteristic(Characteristic.ProgrammableSwitchEvent)
-//     	 
-     	   .setValue(function(callback) {
+     	.setValue(Characteristic.ProgrammableSwitchEvent.SINGLE_PRESS);
+		} else if (gesture == '2') {
+        this.switch1Service
+	.getCharacteristic(Characteristic.ProgrammableSwitchEvent)
+     	.setValue(Characteristic.ProgrammableSwitchEvent.DOUBLE_PRESS);
+		} else if (gesture == '3') {
+        this.switch1Service
+	.getCharacteristic(Characteristic.ProgrammableSwitchEvent)
+     	.setValue(Characteristic.ProgrammableSwitchEvent.LONG_PRESS);
+		}
+		
+		
+/*		
+		function(callback) {
                 switch (gesture) {
                     case '1':
                         callback(null, Characteristic.ProgrammableSwitchEvent.SINGLE_PRESS);
@@ -83,7 +95,7 @@ class ESPGESPlugin
                 }
             });
 		
-		}
+		}*/
 	    
     });
 
