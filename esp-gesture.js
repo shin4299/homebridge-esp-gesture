@@ -8,7 +8,7 @@ module.exports = (homebridge) => {
   Service = homebridge.hap.Service;
   Characteristic = homebridge.hap.Characteristic;
 
-  homebridge.registerAccessory('homebridge-esp-lux', 'ESPLUX', ESPLUXPlugin);
+  homebridge.registerAccessory('homebridge-esp-gesture', 'GestureButton', ESPLUXPlugin);
 };
 
 class ESPLUXPlugin
@@ -22,10 +22,11 @@ class ESPLUXPlugin
 
     this.informationService
       .setCharacteristic(Characteristic.Manufacturer, "ESP")
-      .setCharacteristic(Characteristic.Model, "ESPEasyLux")
+      .setCharacteristic(Characteristic.Model, "ESPEasyGesture")
       .setCharacteristic(Characteristic.SerialNumber, this.device);
 	  
-	this.lightService = new Service.LightSensor(this.name);
+	this.switch1Service = new Service.StatelessProgrammableSwitch(this.name + '1');
+	this.switch2Service = new Service.StatelessProgrammableSwitch(this.name + '2');
     
 
     this.server = dgram.createSocket('udp4');
@@ -46,13 +47,30 @@ class ESPLUXPlugin
           return;
       }
 
-      const light_lux = json.light_lux;
+      const gesture = json.gesture;
 	    
-    if (light_lux >= 0) {
-        this.lightService
-	.getCharacteristic(Characteristic.CurrentAmbientLightLevel)
-	.setValue(Math.round(light_lux))
-    }
+    if (gesture >= 4) {
+        this.switch2Service
+	.getCharacteristic(Characteristic.ProgrammableSwitchEvent);
+     	 if (gesture == '4') {
+     	   event.updateValue(Characteristic.ProgrammableSwitchEvent.SINGLE_PRESS); //0
+   	   } else if (gesture == '5') {
+   	     event.updateValue(Characteristic.ProgrammableSwitchEvent.DOUBLE_PRESS); //1
+   	   } else if (gesture == '6') {
+   	     event.updateValue(Characteristic.ProgrammableSwitchEvent.LONG_PRESS); //2
+  	    }
+    } else if (gesture >= 1) {
+        this.switch1Service
+	.getCharacteristic(Characteristic.ProgrammableSwitchEvent);
+     	 if (gesture == '1') {
+     	   event.updateValue(Characteristic.ProgrammableSwitchEvent.SINGLE_PRESS); //0
+   	   } else if (gesture == '2') {
+   	     event.updateValue(Characteristic.ProgrammableSwitchEvent.DOUBLE_PRESS); //1
+   	   } else if (gesture == '3') {
+   	     event.updateValue(Characteristic.ProgrammableSwitchEvent.LONG_PRESS); //2
+  	    }
+    } 
+	    
     });
 
     
@@ -62,7 +80,7 @@ class ESPLUXPlugin
 
   getServices() {
 	  
-	return [this.informationService, this.lightService];
+	return [this.informationService, this.switch1Service, this.switch2Service];
 
   }
 }
