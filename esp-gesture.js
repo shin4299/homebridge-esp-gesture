@@ -64,14 +64,14 @@ class ESPGESPlugin
         this.switch1Service
 	.getCharacteristic(Characteristic.ProgrammableSwitchEvent)
 //     	 if (gesture == '1') {
-     	   .setValue( 
-		if (gesture == '1') 
+     	   .setValue( Characteristic.ProgrammableSwitchEvent.SINGLE_PRESS );
+	/*	if (gesture == '1') 
 		Characteristic.ProgrammableSwitchEvent.SINGLE_PRESS; //0
 		if (gesture == '2') 
    	     	Characteristic.ProgrammableSwitchEvent.DOUBLE_PRESS; //1
    	   	if (gesture == '3') 
    	     	Characteristic.ProgrammableSwitchEvent.LONG_PRESS); //2
-  	    )
+  	    )*/
     } 
 	    
     });
