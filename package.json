@@ -13,8 +13,8 @@
   "keywords": [
     "homebridge-plugin",
     "esp",
-    "lux",
-    "light",
+    "gesture",
+    "button",
     "sensor"
   ],
   "author": "shin4299",
