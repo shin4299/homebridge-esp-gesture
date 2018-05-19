@@ -25,8 +25,8 @@ class ESPGESPlugin
       .setCharacteristic(Characteristic.Model, "ESPEasyGesture")
       .setCharacteristic(Characteristic.SerialNumber, this.device);
 	  
-	this.switch1Service = new Service.StatelessProgrammableSwitch(this.name + '1');
-//	this.switch2Service = new Service.StatelessProgrammableSwitch(this.name + '2');
+	this.switch1Service = new Service.StatelessProgrammableSwitch(this.name 1);
+	this.switch2Service = new Service.StatelessProgrammableSwitch(this.name 2);
     
 
     this.server = dgram.createSocket('udp4');
@@ -48,19 +48,6 @@ class ESPGESPlugin
       }
 
       const gesture = json.gesture;
-	    
-/*    if (gesture >= 4) {
-        this.switch2Service
-	.getCharacteristic(Characteristic.ProgrammableSwitchEvent);
-     	 if (gesture == '4') {
-     	   event.updateValue(Characteristic.ProgrammableSwitchEvent.SINGLE_PRESS); //0
-   	   } else if (gesture == '5') {
-   	     event.updateValue(Characteristic.ProgrammableSwitchEvent.DOUBLE_PRESS); //1
-   	   } else if (gesture == '6') {
-   	     event.updateValue(Characteristic.ProgrammableSwitchEvent.LONG_PRESS); //2
-  	    }
-    } else */
-	  //  let state;
 
 	    	if (gesture == '1') {
         this.switch1Service
@@ -74,28 +61,22 @@ class ESPGESPlugin
         this.switch1Service
 	.getCharacteristic(Characteristic.ProgrammableSwitchEvent)
      	.setValue(Characteristic.ProgrammableSwitchEvent.LONG_PRESS);
+		} else if (gesture == '4') {
+        this.switch2Service
+	.getCharacteristic(Characteristic.ProgrammableSwitchEvent)
+     	.setValue(Characteristic.ProgrammableSwitchEvent.SINGLE_PRESS);
+		} else if (gesture == '5') {
+        this.switch2Service
+	.getCharacteristic(Characteristic.ProgrammableSwitchEvent)
+     	.setValue(Characteristic.ProgrammableSwitchEvent.DOUBLE_PRESS);
+		} else if (gesture == '6') {
+        this.switch2Service
+	.getCharacteristic(Characteristic.ProgrammableSwitchEvent)
+     	.setValue(Characteristic.ProgrammableSwitchEvent.LONG_PRESS);
 		}
 		
 		
-/*		
-		function(callback) {
-                switch (gesture) {
-                    case '1':
-                        callback(null, Characteristic.ProgrammableSwitchEvent.SINGLE_PRESS);
-                        break;
-                    case '2':
-                        callback(null, Characteristic.ProgrammableSwitchEvent.DOUBLE_PRESS);
-                        break;
-                    case '3':
-                        callback(null, Characteristic.ProgrammableSwitchEvent.LONG_PRESS);
-                        break;
-//                    default:
-//                        callback(null, Characteristic.TargetDoorState.STOPPED);
-//                        break;
-                }
-            });
-		
-		}*/
+
 	    
     });
 
@@ -106,8 +87,8 @@ class ESPGESPlugin
 
   getServices() {
 	  
-	return [this.informationService, this.switch1Service];
-//	return [this.informationService, this.switch1Service, this.switch2Service];
+//	return [this.informationService, this.switch1Service];
+	return [this.informationService, this.switch1Service, this.switch2Service];
 
   }
 }
