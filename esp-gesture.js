@@ -18,6 +18,7 @@ class ESPGESPlugin
     this.name = config.name;
     this.num = config.number || '1';
     this.listen_port = config.listen_port || 8265;
+	  this.realname = this.name + this.num
 	  
 	this.informationService = new Service.AccessoryInformation();
 
@@ -26,7 +27,7 @@ class ESPGESPlugin
       .setCharacteristic(Characteristic.Model, "ESPEasyGesture")
       .setCharacteristic(Characteristic.SerialNumber, this.device);
 	  
-	this.switch1Service = new Service.StatelessProgrammableSwitch(this.name + tihs.num);
+	this.switch1Service = new Service.StatelessProgrammableSwitch(this.realname);
 //	this.switch2Service = new Service.StatelessProgrammableSwitch(this.name + '2');
     
 
