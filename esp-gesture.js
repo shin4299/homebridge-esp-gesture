@@ -16,7 +16,7 @@ class ESPGESPlugin
   constructor(log, config) {
     this.log = log;
     this.name = config.name;
-    this.num = config.number || 1;
+    this.num = config.number || '1';
     this.listen_port = config.listen_port || 8265;
 	  
 	this.informationService = new Service.AccessoryInformation();
