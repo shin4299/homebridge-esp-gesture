@@ -16,7 +16,9 @@ class ESPGESPlugin
   constructor(log, config) {
     this.log = log;
     this.name = config.name;
-	  this.nameb = this.name + '2'
+       var switchnamea = this.name + '1'
+       var switchnameb = this.name + '2'
+       
 //    this.num = config.number || '1';
     this.listen_port = config.listen_port || 8265;
 	  
@@ -27,9 +29,9 @@ class ESPGESPlugin
       .setCharacteristic(Characteristic.Model, "ESPEasyGesture")
       .setCharacteristic(Characteristic.SerialNumber, this.device);
 	  
-	this.switch1Service = new Service.StatelessProgrammableSwitch(this.name);
+	this.switch1Service = new Service.StatelessProgrammableSwitch(this.name, switchnamea);
 	  
-	this.switch2Service = new Service.StatelessProgrammableSwitch(this.nameb);
+	this.switch2Service = new Service.StatelessProgrammableSwitch(this.name, switchnameb);
     
 
     this.server = dgram.createSocket('udp4');
