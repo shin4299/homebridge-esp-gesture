@@ -4,11 +4,11 @@ const dgram = require('dgram');
 
 let Service, Characteristic;
 
-module.exports = (homebridge) => {
+module.exports = function(homebridge) => {
   Service = homebridge.hap.Service;
   Characteristic = homebridge.hap.Characteristic;
 
-  homebridge.registerAccessory('homebridge-esp-gesture', 'ESPGESTURE', ESPGESPlugin);
+  homebridge.registerAccessory('homebridge-esp-gesture', 'ESPGESTURE', ESPGESPlugin(homebridge));
 };
 
 class ESPGESPlugin
